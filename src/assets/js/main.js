@@ -45,32 +45,30 @@ const setActiveNavLink = () => {
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
     const navList = document.querySelector('.nav-list');
 
-    if (navToggle && navList) {
-        // Toggle du menu
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
+    if (navToggle && mainNav) {
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
             navList.classList.toggle('active');
-            console.log('Menu toggled:', navList.classList.contains('active'));
+            // Déboguer
+            console.log('Toggle clicked');
+            console.log('mainNav active:', mainNav.classList.contains('active'));
+            console.log('navList active:', navList.classList.contains('active'));
         });
 
-        // Fermer le menu au clic sur un lien
-        navList.querySelectorAll('a').forEach(link => {
+        // Fermer le menu en cliquant sur un lien
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
                 navList.classList.remove('active');
             });
         });
-
-        // Fermer le menu au clic en dehors
-        document.addEventListener('click', (e) => {
-            if (!navList.contains(e.target) && !navToggle.contains(e.target)) {
-                navList.classList.remove('active');
-            }
-        });
     }
 
-    // Initialiser les autres fonctionnalités
+    // Initialisation des autres fonctionnalités
     createParticles();
     observeElements();
     setActiveNavLink();

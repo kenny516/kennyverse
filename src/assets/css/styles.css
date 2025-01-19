@@ -1188,7 +1188,7 @@ li {
     transform: translateX(-50%);
     width: 15px;
     height: 15px;
-    background: var(--accent-color);
+    background: var (--accent-color);
     border-radius: 50%;
 }
 
@@ -1686,29 +1686,243 @@ li {
 
 /* ...existing code... */
 
+/* Menu mobile styles */
 @media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--light-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    .main-nav {
+        width: 100%;
+    }
+
+    .nav-list {
+        display: none; /* Cache le menu par défaut */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .nav-list.active {
+        display: flex !important; /* Force l'affichage quand actif */
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .nav-list li {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-list a {
+        display: block;
+        padding: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--light-text);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-list a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Supprimez toutes les autres règles media queries concernant le menu mobile */
+
+/* Navbar styles */
+.site-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+/* Style mobile */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--light-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+    }
+
+    .main-nav.active {
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-list li {
+        width: 100%;
+    }
+
+    .nav-list a {
+        display: block;
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* ...existing code... */
+
+/* Styles de base du header */
+.site-header {
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+}
+
+/* Supprimez tous les autres styles de navigation mobile et remplacez-les par ceux-ci */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--light-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 46, 0.98);
+        backdrop-filter: blur(10px);
+    }
+
+    .main-nav.active {
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-list li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-list li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-list a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        width: 100%;
+        gap: 0.5rem;
+    }
+}
+
+/* ...existing code... */
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
     .nav-list {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
-        right: 0;
-        background-color: var(--background-color);
-        padding: 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        background: rgba(26, 26, 46, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
     }
 
     .nav-list.active {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
     }
 
     .nav-list li {
-        display: block;
-        margin: 10px 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .nav-toggle {
-        display: block;
+    .nav-list li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-list a {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
     }
 }
 
