@@ -15,8 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      # url: ${{ steps.deployment.outputs.page_url }}
-    
+
     steps:
       - uses: actions/checkout@v4
       
@@ -25,9 +24,16 @@ jobs:
 
       - name: Prepare deployment
         run: |
+          echo "Cleaning _site directory"
           rm -rf ./_site
           mkdir -p ./_site
+          echo "Copying src content to _site"
           cp -r src/* ./_site/
+          echo "Files in _site:"
+          ls -R ./_site
+
+      - name: Disable Jekyll
+        run: touch ./_site/.nojekyll
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
