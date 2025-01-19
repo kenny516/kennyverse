@@ -1,28 +1,32 @@
-# README.md
+# Portfolio de Kenny
 
-# Portfolio Dev
+![GitHub deployement](https://github.com/kenny516/portfolio/actions/workflows/deploy.yml/badge.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/kenny516/portfolio)
 
-Bienvenue dans le projet Portfolio Dev. Ce projet est un portfolio personnel conçu pour présenter vos compétences, vos projets et vos informations de contact.
+## 🚀 Démo en direct
+[Voir le portfolio](https://kenny516.github.io/kennyverse/src)
 
-## Structure du projet
+## 📝 Description
+Portfolio personnel présentant mes projets et compétences en développement web. Étudiant en 3ème année à ITUniversity, passionné par le développement Full Stack.
 
-Le projet est organisé comme suit :
+## 🛠️ Technologies Utilisées
+- HTML5/CSS3
+- JavaScript (ES6+)
+- Font Awesome pour les icônes
+- GitHub Pages pour le déploiement
 
-```
-portfolio-dev
-├── src
-│   ├── assets
-│   │   ├── css
-│   │   │   └── styles.css
-│   │   └── js
-│   │       └── main.js
-│   ├── pages
-│   │   ├── about.html
-│   │   ├── contact.html
-│   │   └── projects.html
+## 🏗️ Structure du Projet
+```bash
+portfolio/
+├── src/
+│   ├── assets/
+│   │   ├── css/
+│   │   └── js/
+│   ├── pages/
 │   └── index.html
-├── .gitignore
-└── README.md
+└── .github/
+    └── workflows/
+        └── deploy.yml
 ```
 
 ## Fichiers principaux
@@ -36,7 +40,7 @@ portfolio-dev
 
 ## Installation
 
-1. Clonez le dépôt : `git clone <url-du-dépôt>`
+1. Clonez le dépôt : `git clone https://github.com/kenny516/kennyverse.git`
 2. Ouvrez le fichier `index.html` dans votre navigateur pour voir votre portfolio.
 
 ## Contribution
