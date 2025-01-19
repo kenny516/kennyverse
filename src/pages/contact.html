@@ -37,30 +37,33 @@
         </div>
     </header>
     <main>
-        <form action="https://formsubmit.co/kennyandriantsirafyChan@gmail.com" method="POST">
+        <div class="form-description">
+            <h2>Restons en contact</h2>
+            <p>Envoyez-moi un message directement via ce formulaire. Je recevrai votre message sur mon email et pourrai
+                vous répondre dans les plus brefs délais.</p>
+        </div>
+        <form action="https://formsubmit.co/16ac51fc05371c54a128a851f4cf5d3f" method="POST">
             <!-- Protection anti-spam -->
             <input type="text" name="_honey" style="display:none">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://kenny516.github.io/Portfolio/thanks.html">
-            <input type="hidden" name="_subject" value="Nouveau message du Portfolio!">
+            <input type="hidden" name="_next" value="https://kenny516.github.io/kennyverse/src/thanks.html">
+            <input type="hidden" name="_subject" value="Message du Portfolio de: ">
             <input type="hidden" name="_template" value="table">
-            <!-- Configurer la réponse automatique -->
-            <input type="hidden" name="_autoresponse"
-                value="Merci pour votre message. Je vous répondrai dès que possible.">
-            <!-- Configurer l'email de réponse -->
             <input type="hidden" name="_replyto">
 
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
+            <label for="name">Votre Nom :</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required
+            <label for="email">Votre Email :</label>
+            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required
                 oninput="document.querySelector('[name=_replyto]').value = this.value">
 
-            <label for="message">Message :</label>
-            <textarea id="message" name="message" required></textarea>
+            <label for="message">Votre Message :</label>
+            <textarea id="message" name="message" placeholder="Écrivez votre message ici..." required></textarea>
 
-            <button type="submit">Envoyer</button>
+            <button type="submit">
+                <i class="fas fa-paper-plane"></i> Envoyer le message
+            </button>
         </form>
     </main>
     <footer>
