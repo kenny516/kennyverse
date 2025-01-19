@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <title>Contact</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -36,17 +37,33 @@
         </div>
     </header>
     <main>
-        <form action="#" method="post">
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
+        <div class="form-description">
+            <h2>Restons en contact</h2>
+            <p>Envoyez-moi un message directement via ce formulaire. Je recevrai votre message sur mon email et pourrai
+                vous répondre dans les plus brefs délais.</p>
+        </div>
+        <form action="https://formsubmit.co/16ac51fc05371c54a128a851f4cf5d3f" method="POST">
+            <!-- Protection anti-spam -->
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://kenny516.github.io/kennyverse/src/thanks.html">
+            <input type="hidden" name="_subject" value="Message du Portfolio de: ">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_replyto">
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
+            <label for="name">Votre Nom :</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
 
-            <label for="message">Message :</label>
-            <textarea id="message" name="message" required></textarea>
+            <label for="email">Votre Email :</label>
+            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required
+                oninput="document.querySelector('[name=_replyto]').value = this.value">
 
-            <button type="submit">Envoyer</button>
+            <label for="message">Votre Message :</label>
+            <textarea id="message" name="message" placeholder="Écrivez votre message ici..." required></textarea>
+
+            <button type="submit">
+                <i class="fas fa-paper-plane"></i> Envoyer le message
+            </button>
         </form>
     </main>
     <footer>
@@ -89,6 +106,11 @@
     </footer>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/translations.js"></script>
+    <script>
+        (function () {
+            emailjs.init("VOTRE_CLE_PUBLIQUE"); // Initialisez avec votre clé publique EmailJS
+        })();
+    </script>
 </body>
 
 </html>
