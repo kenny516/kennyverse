@@ -9,34 +9,30 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  actions: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
+      # url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Copy source files
+      - name: Prepare deployment
         run: |
+          rm -rf ./_site
           mkdir -p ./_site
           cp -r src/* ./_site/
-        
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
+          path: '_site'
+          
+      - name: Deploy
         uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
