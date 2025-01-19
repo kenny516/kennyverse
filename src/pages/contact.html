@@ -20,10 +20,10 @@
             </button>
             <nav>
                 <ul>
-                    <li><a href="../index.html">Accueil</a></li>
-                    <li><a href="about.html">À propos</a></li>
-                    <li><a href="projects.html">Projets</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="../index.html" data-i18n="home">Accueil</a></li>
+                    <li><a href="about.html" data-i18n="about">À propos</a></li>
+                    <li><a href="projects.html" data-i18n="projects">Projets</a></li>
+                    <li><a href="contact.html" data-i18n="contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="language-selector">
@@ -38,8 +38,9 @@
     </header>
     <main>
         <div class="form-description">
-            <h2>Restons en contact</h2>
-            <p>Envoyez-moi un message directement via ce formulaire. Je recevrai votre message sur mon email et pourrai
+            <h2 data-i18n="contactFormTitle">Restons en contact</h2>
+            <p data-i18n="contactFormDesc">Envoyez-moi un message directement via ce formulaire. Je recevrai votre
+                message sur mon email et pourrai
                 vous répondre dans les plus brefs délais.</p>
         </div>
         <form action="https://formsubmit.co/16ac51fc05371c54a128a851f4cf5d3f" method="POST">
@@ -51,18 +52,20 @@
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_replyto">
 
-            <label for="name">Votre Nom :</label>
+            <label for="name" data-i18n="formName">Votre Nom :</label>
             <input type="text" id="name" name="name" placeholder="John Doe" required>
 
-            <label for="email">Votre Email :</label>
+            <label for="email" data-i18n="formEmail">Votre Email :</label>
             <input type="email" id="email" name="email" placeholder="john.doe@example.com" required
                 oninput="document.querySelector('[name=_replyto]').value = this.value">
 
-            <label for="message">Votre Message :</label>
-            <textarea id="message" name="message" placeholder="Écrivez votre message ici..." required></textarea>
+            <label for="message" data-i18n="formMessage">Votre Message :</label>
+            <textarea id="message" name="message" data-i18n-placeholder="formMessagePlaceholder"
+                placeholder="Écrivez votre message ici..." required></textarea>
 
             <button type="submit">
-                <i class="fas fa-paper-plane"></i> Envoyer le message
+                <i class="fas fa-paper-plane"></i>
+                <span data-i18n="formSubmit">Envoyer le message</span>
             </button>
         </form>
     </main>
