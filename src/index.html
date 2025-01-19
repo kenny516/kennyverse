@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
+    <title>Kenny - Développeur Full Stack Junior</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -22,15 +22,73 @@
             </nav>
         </nav>
     </header>
+
     <main>
-        <section>
-            <h2>Présentation</h2>
-            <p>Voici un aperçu de mon travail et de mes compétences.</p>
+        <section class="hero">
+            <div class="hero-content animate-in">
+                <h1 class="typing-effect">Salut, je suis Kenny 👋</h1>
+                <h2>Développeur Full Stack en formation</h2>
+                <p class="subtitle">Étudiant en 3ème année à ITUniversity</p>
+                <div class="cta-buttons">
+                    <a href="pages/projects.html" class="btn primary">Voir mes projets</a>
+                    <a href="pages/contact.html" class="btn secondary">Me contacter</a>
+                </div>
+            </div>
+            <div id="particles"></div>
+        </section>
+
+        <section class="quick-info animate-in">
+            <div class="tech-stack">
+                <h3>Technologies</h3>
+                <div class="tech-icons">
+                    <img src="assets/icons/html5.svg" alt="HTML5" title="HTML5">
+                    <img src="assets/icons/css3.svg" alt="CSS3" title="CSS3">
+                    <img src="assets/icons/javascript.svg" alt="JavaScript" title="JavaScript">
+                    <img src="assets/icons/react.svg" alt="React" title="React">
+                    <img src="assets/icons/node.svg" alt="Node.js" title="Node.js">
+                </div>
+            </div>
+        </section>
+
+        <section class="latest-projects animate-in">
+            <h2>Derniers Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Projet 1</h3>
+                    <p>Description courte du projet</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
+                    <a href="pages/projects.html" class="btn-small">Voir plus</a>
+                </div>
+                <!-- Répéter pour 2-3 projets -->
+            </div>
+        </section>
+
+        <section class="learning-path animate-in">
+            <h2>En cours d'apprentissage</h2>
+            <div class="learning-items">
+                <div class="learning-item">
+                    <span class="progress-indicator">🎯</span>
+                    <p>React.js Avancé</p>
+                </div>
+                <div class="learning-item">
+                    <span class="progress-indicator">📚</span>
+                    <p>Architecture Backend</p>
+                </div>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>&copy; 2023 Mon Nom. Tous droits réservés.</p>
+        <div class="social-links">
+            <a href="https://github.com/kenny516" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/votre-profil" target="_blank">LinkedIn</a>
+        </div>
+        <p>&copy; 2024 Kenny. Tous droits réservés.</p>
     </footer>
+
     <script src="assets/js/main.js"></script>
 </body>
 

@@ -14,6 +14,13 @@
   --bg-color: #1a1a2e;
   --text-color: #e6e6e6;
   --accent-color: #00ff9d;
+  --neon-blue: #00f7ff;
+  --neon-purple: #7b2cf3;
+  --dark-bg: #0a0b10;
+  --darker-bg: #050507;
+  --light-text: #e0e0e0;
+  --neon-glow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+  --glass-bg: rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -21,6 +28,7 @@
   padding: 0;
   box-sizing: border-box;
   transition: all 0.3s ease;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 body {
@@ -32,6 +40,27 @@ body {
   color: var(--text-color);
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
+  background: var(--dark-bg);
+  color: var(--light-text);
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+  padding-top: 80px; /* Ajustez cette valeur selon la hauteur de votre navbar */
+}
+
+/* Effet de grille en arrière-plan */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(transparent 0%, rgba(123, 44, 243, 0.05) 100%),
+    linear-gradient(90deg, var(--darker-bg) 1px, transparent 1px) 0 0 / 50px 50px,
+    linear-gradient(var(--darker-bg) 1px, transparent 1px) 0 0 / 50px 50px;
+  z-index: -1;
 }
 
 header {
@@ -44,6 +73,14 @@ header {
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   padding: 1rem 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: var(--darker-bg);
+  border-bottom: 1px solid var(--neon-blue);
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
 nav {
@@ -69,6 +106,12 @@ nav a {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
+  color: var(--light-text);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 nav a::before {
@@ -76,6 +119,14 @@ nav a::before {
   margin-right: 5px;
   opacity: 0;
   transition: 0.3s;
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--neon-blue);
+  transition: width 0.3s ease;
 }
 
 nav a:hover {
@@ -86,6 +137,8 @@ nav a:hover {
 
 nav a:hover::before {
   opacity: 1;
+  width: 100%;
+  box-shadow: var(--neon-glow);
 }
 
 /* Ajout d'un indicateur pour la page active */
@@ -107,6 +160,10 @@ main {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
+  padding: 100px 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 60px);
 }
 
 .section-title {
@@ -116,6 +173,12 @@ main {
   border-bottom: 2px solid var(--secondary-color);
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
+  color: var(--neon-blue);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--neon-purple);
+  padding-bottom: 0.5rem;
+  text-shadow: 0 0 10px var(--neon-blue);
 }
 
 .project-card {
@@ -125,6 +188,13 @@ main {
   padding: 1.5rem;
   margin-bottom: 1rem;
   position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 247, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card::before {
@@ -157,6 +227,8 @@ main {
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
 }
 
 form {
@@ -170,6 +242,13 @@ input, textarea {
   color: var(--text-primary);
   padding: 0.5rem;
   border-radius: 4px;
+  background: var(--glass-bg);
+  border: 1px solid var(--neon-blue);
+  color: var(--light-text);
+  padding: 1rem;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 button {
@@ -179,10 +258,21 @@ button {
   padding: 0.8rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
+  background: var(--neon-purple);
+  color: var(--light-text);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 button:hover {
   filter: brightness(1.2);
+  background: var(--neon-blue);
+  box-shadow: var(--neon-glow);
 }
 
 footer {
@@ -190,6 +280,13 @@ footer {
   padding: 20px 0;
   background: #35424a;
   color: #ffffff;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background: var(--darker-bg);
+  border-top: 1px solid var(--neon-blue);
+  padding: 1.5rem 0;
+  text-align: center;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -226,6 +323,13 @@ footer {
   margin: 1rem 0;
   border: 1px solid var(--secondary-color);
   box-shadow: 0 0 20px rgba(0, 159, 253, 0.1);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 247, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .terminal-style::before {
@@ -234,12 +338,7 @@ footer {
 }
 
 /* Animation pour simuler l'écriture */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-.typing-effect {
+/* .typing-effect {
   overflow: hidden;
   white-space: nowrap;
   animation: typing 3s steps(40, end);
@@ -248,11 +347,20 @@ footer {
   overflow: hidden;
   animation: typing 3.5s steps(40, end),
              blink-caret 0.75s step-end infinite;
-}
+  border-right: 2px solid var(--neon-blue);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+} */
 
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: var(--accent-color) }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: var(--neon-blue) }
 }
 
 .social-links {
@@ -266,10 +374,16 @@ footer {
     color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
+    color: var(--light-text);
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
 }
 
 .social-links a:hover {
     color: #007bff;
+    color: var(--neon-blue);
+    text-shadow: var(--neon-glow);
 }
 
 .skills-grid {
@@ -284,10 +398,19 @@ footer {
   padding: 1.5rem;
   border-radius: 8px;
   transition: transform 0.3s;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 247, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-category:hover {
   transform: translateY(-5px);
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
 }
 
 ul {
@@ -308,4 +431,101 @@ li {
     align-items: center;
     gap: 1rem;
   }
+}
+
+/* Style amélioré pour le terminal */
+.terminal-window {
+  background: var(--darker-bg);
+  border: 1px solid var(--neon-blue);
+  border-radius: 8px;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: var(--glass-bg);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--neon-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.red { background: #ff5f56; }
+.terminal-button.yellow { background: #ffbd2e; }
+.terminal-button.green { background: #27c93f; }
+
+.terminal-title {
+  color: var(--light-text);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.terminal-body {
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.terminal-line {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.terminal-prompt {
+  color: var(--neon-purple);
+  margin-right: 1rem;
+}
+
+.terminal-output {
+  color: var(--neon-blue);
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--neon-blue);
+  animation: typing 2s steps(30, end) forwards,
+             blink-caret 0.75s step-end infinite;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--neon-blue); }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--neon-blue);
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

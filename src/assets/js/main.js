@@ -42,8 +42,34 @@ const setActiveNavLink = () => {
     });
 };
 
+// Fonction pour animer le terminal
+const animateTerminal = () => {
+    const terminalOutputs = document.querySelectorAll('.terminal-output');
+
+    terminalOutputs.forEach(output => {
+        // Sauvegarder le texte original
+        const originalText = output.textContent;
+        // Vider le contenu initial
+        output.textContent = '';
+
+        // Créer un span pour le texte
+        const textSpan = document.createElement('span');
+        textSpan.textContent = originalText;
+        output.appendChild(textSpan);
+
+        // S'assurer que le conteneur a la bonne largeur
+        output.style.width = '0';
+
+        // Réinitialiser l'animation
+        output.style.animation = 'none';
+        output.offsetHeight; // Forcer un reflow
+        output.style.animation = null;
+    });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     observeElements();
     setActiveNavLink();
+    animateTerminal();
 });
