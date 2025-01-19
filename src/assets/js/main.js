@@ -89,6 +89,64 @@ const animateTerminal = () => {
     });
 };
 
+// Initialiser EmailJS de manière sécurisée
+(async function () {
+    try {
+        const response = await fetch('/.netlify/functions/get-emailjs-config');
+        const config = await response.json();
+        emailjs.init(config.publicKey);
+    } catch (error) {
+        console.error('Error initializing EmailJS:', error);
+    }
+})();
+
+// Modifier le gestionnaire du formulaire
+document.getElementById('contact-form').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    try {
+        const response = await fetch('/.netlify/functions/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+            })
+        });
+
+        if (response.ok) {
+            alert('Message envoyé avec succès!');
+            document.getElementById('contact-form').reset();
+        } else {
+            throw new Error('Erreur lors de l\'envoi');
+        }
+    } catch (error) {
+        alert('Erreur lors de l\'envoi du message. Veuillez réessayer.');
+        console.error('Send error:', error);
+    }
+});
+
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    emailjs.send("VOTRE_SERVICE_ID", "VOTRE_TEMPLATE_ID", {
+        from_name: document.getElementById('name').value,
+        reply_to: document.getElementById('email').value,
+        message: document.getElementById('message').value,
+    }).then(
+        function () {
+            alert('Message envoyé avec succès!');
+            document.getElementById('contactForm').reset();
+        },
+        function (error) {
+            alert('Erreur lors de l\'envoi: ' + error);
+        }
+    );
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     observeElements();

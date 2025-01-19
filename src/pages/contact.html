@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <title>Contact</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -36,12 +37,25 @@
         </div>
     </header>
     <main>
-        <form action="#" method="post">
+        <form action="https://formsubmit.co/kennyandriantsirafyChan@gmail.com" method="POST">
+            <!-- Protection anti-spam -->
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://kenny516.github.io/Portfolio/thanks.html">
+            <input type="hidden" name="_subject" value="Nouveau message du Portfolio!">
+            <input type="hidden" name="_template" value="table">
+            <!-- Configurer la réponse automatique -->
+            <input type="hidden" name="_autoresponse"
+                value="Merci pour votre message. Je vous répondrai dès que possible.">
+            <!-- Configurer l'email de réponse -->
+            <input type="hidden" name="_replyto">
+
             <label for="name">Nom :</label>
             <input type="text" id="name" name="name" required>
 
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required
+                oninput="document.querySelector('[name=_replyto]').value = this.value">
 
             <label for="message">Message :</label>
             <textarea id="message" name="message" required></textarea>
@@ -89,6 +103,11 @@
     </footer>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/translations.js"></script>
+    <script>
+        (function () {
+            emailjs.init("VOTRE_CLE_PUBLIQUE"); // Initialisez avec votre clé publique EmailJS
+        })();
+    </script>
 </body>
 
 </html>
