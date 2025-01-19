@@ -2,37 +2,28 @@ name: Deploy Portfolio
 
 on:
   push:
-    branches: [ "main" ]  # Déclenche le workflow lors d'un push sur la branche main
-  workflow_dispatch:      # Permet le déclenchement manuel
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Permet une seule déployment concurrent
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
+      - uses: actions/checkout@v4
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        
+      - name: Build
+        run: |
+          mkdir _site
+          cp -r src/* _site/
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './src'  # Le dossier contenant votre site
+          path: '_site'
           
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - name: Deploy
         uses: actions/deploy-pages@v4
+        id: deployment
