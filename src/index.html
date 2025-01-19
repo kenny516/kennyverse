@@ -6,32 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kenny - Développeur Full Stack Junior</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
     <header>
-        <h1>Bienvenue sur mon portfolio</h1>
-        <nav>
+        <div class="header-content">
+            <h1 data-i18n="welcome">Bienvenue sur mon portfolio</h1>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav>
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="pages/about.html">À propos</a></li>
-                    <li><a href="pages/projects.html">Projets</a></li>
-                    <li><a href="pages/contact.html">Contact</a></li>
+                    <li><a href="index.html" data-i18n="home">Accueil</a></li>
+                    <li><a href="pages/about.html" data-i18n="about">À propos</a></li>
+                    <li><a href="pages/projects.html" data-i18n="projects">Projets</a></li>
+                    <li><a href="pages/contact.html" data-i18n="contact">Contact</a></li>
                 </ul>
             </nav>
-        </nav>
+            <div class="language-selector">
+                <button class="lang-btn" data-lang="fr">
+                    <span class="flag-icon flag-icon-fr"></span>
+                </button>
+                <button class="lang-btn" data-lang="en">
+                    <span class="flag-icon flag-icon-gb"></span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <main>
         <section class="hero">
             <div class="hero-content animate-in">
-                <h1 class="typing-effect">Salut, je suis Kenny 👋</h1>
-                <h2>Développeur Full Stack en formation</h2>
-                <p class="subtitle">Étudiant en 3ème année à ITUniversity</p>
+                <h1 class="typing-effect" data-i18n="hello">Salut, je suis Kenny 👋</h1>
+                <h2 data-i18n="role">Développeur Full Stack en formation</h2>
+                <p class="subtitle" data-i18n="student">Étudiant en 3ème année à ITUniversity</p>
                 <div class="cta-buttons">
-                    <a href="pages/projects.html" class="btn primary">Voir mes projets</a>
-                    <a href="pages/contact.html" class="btn secondary">Me contacter</a>
+                    <a href="pages/projects.html" class="btn primary" data-i18n="viewProjects">Voir mes projets</a>
+                    <a href="pages/contact.html" class="btn secondary" data-i18n="contactMe">Me contacter</a>
                 </div>
             </div>
             <div id="particles"></div>
@@ -41,11 +54,13 @@
             <div class="tech-stack">
                 <h3>Technologies</h3>
                 <div class="tech-icons">
-                    <img src="assets/icons/html5.svg" alt="HTML5" title="HTML5">
-                    <img src="assets/icons/css3.svg" alt="CSS3" title="CSS3">
-                    <img src="assets/icons/javascript.svg" alt="JavaScript" title="JavaScript">
-                    <img src="assets/icons/react.svg" alt="React" title="React">
-                    <img src="assets/icons/node.svg" alt="Node.js" title="Node.js">
+                    <i class="fab fa-html5" title="HTML5"></i>
+                    <i class="fab fa-css3-alt" title="CSS3"></i>
+                    <i class="fab fa-js" title="JavaScript"></i>
+                    <i class="fab fa-react" title="React"></i>
+                    <i class="fab fa-node-js" title="Node.js"></i>
+                    <i class="fab fa-git-alt" title="Git"></i>
+                    <i class="fab fa-github" title="GitHub"></i>
                 </div>
             </div>
         </section>
@@ -54,15 +69,14 @@
             <h2>Derniers Projets</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>Projet 1</h3>
-                    <p>Description courte du projet</p>
+                    <h3>PharmaSys</h3>
+                    <p></p>
                     <div class="project-tech">
                         <span>React</span>
                         <span>Node.js</span>
                     </div>
                     <a href="pages/projects.html" class="btn-small">Voir plus</a>
                 </div>
-                <!-- Répéter pour 2-3 projets -->
             </div>
         </section>
 
@@ -82,14 +96,46 @@
     </main>
 
     <footer>
-        <div class="social-links">
-            <a href="https://github.com/kenny516" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/votre-profil" target="_blank">LinkedIn</a>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 data-i18n="footerAbout">À propos</h3>
+                    <p data-i18n="footerDescription">Développeur Full Stack en formation, passionné par les nouvelles
+                        technologies.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footerContact">Contact</h3>
+                    <p>Email: kennyandriantsirafyChan@gmail.com</p>
+                </div>
+                <div class="footer-section social">
+                    <h3 data-i18n="footerSocial">Réseaux sociaux</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/kenny516" target="_blank" rel="noopener noreferrer"
+                            class="social-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/andriantsirafy-chan-kenny-69827430a/" target="_blank"
+                            rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://www.facebook.com/chankenny.andriantsirafy.9" target="_blank"
+                            rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kenny - <span data-i18n="footerRights">Tous droits réservés.</span></p>
+            </div>
         </div>
-        <p>&copy; 2024 Kenny. Tous droits réservés.</p>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/translations.js"></script>
 </body>
 
 </html>

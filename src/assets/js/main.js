@@ -42,6 +42,28 @@ const setActiveNavLink = () => {
     });
 };
 
+// Mobile menu toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('nav ul');
+
+navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav') && !e.target.closest('.nav-toggle')) {
+        navMenu.classList.remove('active');
+    }
+});
+
+// Close menu when clicking on a link
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
+
 // Fonction pour animer le terminal
 const animateTerminal = () => {
     const terminalOutputs = document.querySelectorAll('.terminal-output');
