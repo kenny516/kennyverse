@@ -4,7 +4,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/kenny516/portfolio)
 
 ## 🚀 Démo en direct
-[Voir le portfolio](https://kenny516.github.io/kennyverse/src)
+[Voir le portfolio](https://kenny516.github.io/kennyverse)
 
 ## 📝 Description
 Portfolio personnel présentant mes projets et compétences en développement web. Étudiant en 3ème année à ITUniversity, passionné par le développement Full Stack.
