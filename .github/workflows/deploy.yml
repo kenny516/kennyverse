@@ -5,25 +5,38 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+# Ajout des permissions nécessaires
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: write
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
-      - name: Build
-        run: |
-          mkdir _site
-          cp -r src/* _site/
-        
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./src
+          destination: ./_site
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          path: '_site'
-          
-      - name: Deploy
-        uses: actions/deploy-pages@v4
+
+      - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
