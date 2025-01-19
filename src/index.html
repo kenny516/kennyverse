@@ -11,26 +11,50 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-content">
-            <h1 data-i18n="welcome">Bienvenue sur mon portfolio</h1>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
-                <ul>
-                    <li><a href="index.html" data-i18n="home">Accueil</a></li>
-                    <li><a href="pages/about.html" data-i18n="about">À propos</a></li>
-                    <li><a href="pages/projects.html" data-i18n="projects">Projets</a></li>
-                    <li><a href="pages/contact.html" data-i18n="contact">Contact</a></li>
+            <div class="logo">
+                <a href="index.html">KC</a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span data-i18n="home">Accueil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/about.html">
+                            <i class="fas fa-user"></i>
+                            <span data-i18n="about">À propos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/projects.html">
+                            <i class="fas fa-code"></i>
+                            <span data-i18n="projects">Projets</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/contact.html">
+                            <i class="fas fa-envelope"></i>
+                            <span data-i18n="contact">Contact</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
-            <div class="language-selector">
-                <button class="lang-btn" data-lang="fr">
-                    <span class="flag-icon flag-icon-fr"></span>
-                </button>
-                <button class="lang-btn" data-lang="en">
-                    <span class="flag-icon flag-icon-gb"></span>
+            <div class="nav-right">
+                <div class="language-selector">
+                    <button class="lang-btn" data-lang="fr">
+                        <span class="flag-icon flag-icon-fr"></span>
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <span class="flag-icon flag-icon-gb"></span>
+                    </button>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
@@ -158,19 +182,17 @@
                             <a href="" target="_blank"><i class="fab fa-github"></i></a>
                             <a href="" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                         </div>
+                        </p>
+                        <div class="project-tech">
+                            <span><i class="fas fa-leaf"></i>Spring Boot</span>
+                            <span><i class="fas fa-code"></i>Thymeleaf</span>
+                            <span><i class="fas fa-database"></i>PostgreSQL</span>
+                        </div>
+                        <a href="pages/projects.html#pharmasys" class="btn-project" data-i18n="viewMore">
+                            Voir plus <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
-                    <p class="project-desc" data-i18n="pharmaSysDesc">Système de gestion de pharmacie avec suivi des
-                        stocks et des ventes</p>
-                    <div class="project-tech">
-                        <span><i class="fas fa-leaf"></i>Spring Boot</span>
-                        <span><i class="fas fa-code"></i>Thymeleaf</span>
-                        <span><i class="fas fa-database"></i>PostgreSQL</span>
-                    </div>
-                    <a href="pages/projects.html#pharmasys" class="btn-project" data-i18n="viewMore">
-                        Voir plus <i class="fas fa-arrow-right"></i>
-                    </a>
                 </div>
-            </div>
         </section>
 
         <section class="learning-path animate-in">
@@ -282,7 +304,8 @@
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/translations.js"></script>
-    <script src="assets/js/skills.js"></script>
+    <!-- Supprimez cette ligne car le fichier n'existe pas -->
+    <!-- <script src="assets/js/skills.js"></script> -->
 </body>
 
 </html>
