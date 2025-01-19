@@ -43,25 +43,36 @@ const setActiveNavLink = () => {
 };
 
 // Mobile menu toggle
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('nav ul');
+document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const navList = document.querySelector('.nav-list');
 
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
+    if (navToggle && mainNav) {
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            navList.classList.toggle('active');
+            // Déboguer
+            console.log('Toggle clicked');
+            console.log('mainNav active:', mainNav.classList.contains('active'));
+            console.log('navList active:', navList.classList.contains('active'));
+        });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('nav') && !e.target.closest('.nav-toggle')) {
-        navMenu.classList.remove('active');
+        // Fermer le menu en cliquant sur un lien
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                navList.classList.remove('active');
+            });
+        });
     }
-});
 
-// Close menu when clicking on a link
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-    });
+    // Initialisation des autres fonctionnalités
+    createParticles();
+    observeElements();
+    setActiveNavLink();
+    animateTerminal();
 });
 
 // Fonction pour animer le terminal
@@ -89,45 +100,7 @@ const animateTerminal = () => {
     });
 };
 
-// Initialiser EmailJS de manière sécurisée
-(async function () {
-    try {
-        const response = await fetch('/.netlify/functions/get-emailjs-config');
-        const config = await response.json();
-        emailjs.init(config.publicKey);
-    } catch (error) {
-        console.error('Error initializing EmailJS:', error);
-    }
-})();
 
-// Modifier le gestionnaire du formulaire
-document.getElementById('contact-form').addEventListener('submit', async function (event) {
-    event.preventDefault();
-
-    try {
-        const response = await fetch('/.netlify/functions/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value,
-            })
-        });
-
-        if (response.ok) {
-            alert('Message envoyé avec succès!');
-            document.getElementById('contact-form').reset();
-        } else {
-            throw new Error('Erreur lors de l\'envoi');
-        }
-    } catch (error) {
-        alert('Erreur lors de l\'envoi du message. Veuillez réessayer.');
-        console.error('Send error:', error);
-    }
-});
 
 document.getElementById('contactForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -145,11 +118,4 @@ document.getElementById('contactForm').addEventListener('submit', function (even
             alert('Erreur lors de l\'envoi: ' + error);
         }
     );
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    createParticles();
-    observeElements();
-    setActiveNavLink();
-    animateTerminal();
 });

@@ -12,26 +12,50 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-content">
-            <h1 data-i18n="contactTitle">Contactez-moi</h1>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
-                <ul>
-                    <li><a href="../index.html" data-i18n="home">Accueil</a></li>
-                    <li><a href="about.html" data-i18n="about">À propos</a></li>
-                    <li><a href="projects.html" data-i18n="projects">Projets</a></li>
-                    <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+            <div class="logo">
+                <a href="../index.html">KC</a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li>
+                        <a href="../index.html">
+                            <i class="fas fa-home"></i>
+                            <span data-i18n="home">Accueil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html">
+                            <i class="fas fa-user"></i>
+                            <span data-i18n="about">À propos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="projects.html">
+                            <i class="fas fa-code"></i>
+                            <span data-i18n="projects">Projets</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <i class="fas fa-envelope"></i>
+                            <span data-i18n="contact">Contact</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
-            <div class="language-selector">
-                <button class="lang-btn" data-lang="fr">
-                    <span class="flag-icon flag-icon-fr"></span>
-                </button>
-                <button class="lang-btn" data-lang="en">
-                    <span class="flag-icon flag-icon-gb"></span>
+            <div class="nav-right">
+                <div class="language-selector">
+                    <button class="lang-btn" data-lang="fr">
+                        <span class="flag-icon flag-icon-fr"></span>
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <span class="flag-icon flag-icon-gb"></span>
+                    </button>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
