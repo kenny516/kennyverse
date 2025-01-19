@@ -5,7 +5,6 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
-# Ajout des permissions nécessaires
 permissions:
   contents: read
   pages: write
@@ -26,14 +25,15 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./src
-          destination: ./_site
-
+      - name: Copy source files
+        run: |
+          mkdir -p ./_site
+          cp -r src/* ./_site/
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
 
       - name: Deploy to GitHub Pages
         id: deployment
