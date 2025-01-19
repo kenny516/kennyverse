@@ -6,20 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <title>Contact</title>
 </head>
 
 <body>
     <header>
-        <h1>Contactez-moi</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="projects.html">Projets</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <h1 data-i18n="contactTitle">Contactez-moi</h1>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="projects.html">Projets</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <button class="lang-btn" data-lang="fr">
+                    <span class="flag-icon flag-icon-fr"></span>
+                </button>
+                <button class="lang-btn" data-lang="en">
+                    <span class="flag-icon flag-icon-gb"></span>
+                </button>
+            </div>
+        </div>
     </header>
     <main>
         <form action="#" method="post">
@@ -36,21 +50,45 @@
         </form>
     </main>
     <footer>
-        <p>&copy; 2023 Mon Portfolio</p>
-        <div class="social-links">
-            <a href="https://github.com/kenny516" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/andriantsirafy-chan-kenny-69827430a/" target="_blank"
-                rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://www.facebook.com/chankenny.andriantsirafy.9" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-facebook-f"></i> Facebook
-            </a>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 data-i18n="footerAbout">À propos</h3>
+                    <p data-i18n="footerDescription">Développeur Full Stack en formation, passionné par les nouvelles
+                        technologies.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footerContact">Contact</h3>
+                    <p>Email: kennyandriantsirafyChan@gmail.com</p>
+                </div>
+                <div class="footer-section social">
+                    <h3 data-i18n="footerSocial">Réseaux sociaux</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/kenny516" target="_blank" rel="noopener noreferrer"
+                            class="social-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/andriantsirafy-chan-kenny-69827430a/" target="_blank"
+                            rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://www.facebook.com/chankenny.andriantsirafy.9" target="_blank"
+                            rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kenny - <span data-i18n="footerRights">Tous droits réservés.</span></p>
+            </div>
         </div>
     </footer>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/translations.js"></script>
 </body>
 
 </html>

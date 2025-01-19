@@ -6,49 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>À Propos</title>
 </head>
 
 <body>
     <header>
-        <h1>À Propos de Moi</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="projects.html">Projets</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <h1 data-i18n="aboutTitle">À Propos de Moi</h1>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="projects.html">Projets</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <button class="lang-btn" data-lang="fr">
+                    <span class="flag-icon flag-icon-fr"></span>
+                </button>
+                <button class="lang-btn" data-lang="en">
+                    <span class="flag-icon flag-icon-gb"></span>
+                </button>
+            </div>
+        </div>
     </header>
-    <main class="container">
+    <main>
         <section class="about-section animate-in">
-            <div class="terminal-style">
-                <h2 class="typing-effect">~/mon-profil$ cat about.txt</h2>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <div class="terminal-button red"></div>
+                        <div class="terminal-button yellow"></div>
+                        <div class="terminal-button green"></div>
+                    </div>
+                    <div class="terminal-title">about.sh</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">visitor@portfolio:~$</span>
+                        <span class="terminal-output">cat about.txt</span>
+                    </div>
+                </div>
             </div>
 
             <div class="profile-content">
                 <section class="experience">
-                    <h2 class="section-title">Mon Parcours</h2>
+                    <h2 class="section-title" data-i18n="experienceTitle">Mon Parcours</h2>
                     <div class="terminal-style">
-                        <p>🎓 Formation en cours</p>
+                        <p data-i18n="currentEducation">🎓 Formation en cours</p>
                         <ul>
-                            <li>Étudiant en 3ème année à ITUniversity</li>
-                            <li>Licence en Développement (en cours)</li>
-                            <li>Spécialisation en développement Full Stack</li>
+                            <li data-i18n="studentStatus">Étudiant en 3ème année à ITUniversity</li>
+                            <li data-i18n="degree">Licence en Développement (en cours)</li>
+                            <li data-i18n="specialization">Spécialisation en développement Full Stack</li>
                         </ul>
                     </div>
                 </section>
 
                 <section class="skills">
-                    <h2 class="section-title">Compétences Techniques</h2>
+                    <h2 class="section-title" data-i18n="technicalSkills">Compétences Techniques</h2>
                     <div class="skills-grid">
                         <div class="skill-category">
                             <h3>Frontend</h3>
                             <ul>
                                 <li>HTML5/CSS3</li>
-                                <li>JavaScript (Bases)</li>
-                                <li>React.js (En apprentissage)</li>
+                                <li data-i18n="jsSkill">JavaScript (Bases)</li>
+                                <li data-i18n="reactSkill">React.js (En apprentissage)</li>
                                 <li>Responsive Design</li>
                             </ul>
                         </div>
@@ -68,32 +96,71 @@
                 </section>
 
                 <section class="interests">
-                    <h2 class="section-title">Centres d'intérêt</h2>
+                    <h2 class="section-title" data-i18n="interests">Centres d'intérêt</h2>
                     <div class="terminal-style">
                         <ul>
-                            <li>🚀 Veille technologique</li>
-                            <li>💻 Open Source</li>
-                            <li>📚 Apprentissage continu</li>
-                            <li>🎮 Développement de site web dynamique</li>
+                            <li data-i18n="interest1">🚀 Veille technologique</li>
+                            <li data-i18n="interest2">💻 Open Source</li>
+                            <li data-i18n="interest3">📚 Apprentissage continu</li>
+                            <li data-i18n="interest4">🎮 Développement de site web dynamique</li>
                         </ul>
                     </div>
                 </section>
 
                 <section class="learning-goals">
-                    <h2 class="section-title">Objectifs d'Apprentissage</h2>
+                    <h2 class="section-title" data-i18n="learningGoals">Objectifs d'Apprentissage</h2>
                     <div class="terminal-style">
                         <ul>
-                            <li>🎯 Maîtriser React.js et son écosystème</li>
-                            <li>📚 Approfondir mes connaissances en architecture backend</li>
-                            <li>🔄 Développer des compétences en CI/CD</li>
-                            <li>🚀 Participer à des projets open source</li>
+                            <li data-i18n="goal1">🎯 Maîtriser React.js et son écosystème</li>
+                            <li data-i18n="goal2">📚 Approfondir mes connaissances en architecture backend</li>
+                            <li data-i18n="goal3">🔄 Développer des compétences en CI/CD</li>
+                            <li data-i18n="goal4">🚀 Participer à des projets open source</li>
                         </ul>
                     </div>
                 </section>
             </div>
         </section>
     </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 data-i18n="footerAbout">À propos</h3>
+                    <p data-i18n="footerDescription">Développeur Full Stack en formation, passionné par les nouvelles
+                        technologies.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footerContact">Contact</h3>
+                    <p>Email: kennyandriantsirafyChan@gmail.com</p>
+                </div>
+                <div class="footer-section social">
+                    <h3 data-i18n="footerSocial">Réseaux sociaux</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/kenny516" target="_blank" rel="noopener noreferrer"
+                            class="social-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/andriantsirafy-chan-kenny-69827430a/" target="_blank"
+                            rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://www.facebook.com/chankenny.andriantsirafy.9" target="_blank"
+                            rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kenny - <span data-i18n="footerRights">Tous droits réservés.</span></p>
+            </div>
+        </div>
+    </footer>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/translations.js"></script>
 </body>
 
 </html>

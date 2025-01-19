@@ -42,8 +42,56 @@ const setActiveNavLink = () => {
     });
 };
 
+// Mobile menu toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('nav ul');
+
+navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav') && !e.target.closest('.nav-toggle')) {
+        navMenu.classList.remove('active');
+    }
+});
+
+// Close menu when clicking on a link
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
+
+// Fonction pour animer le terminal
+const animateTerminal = () => {
+    const terminalOutputs = document.querySelectorAll('.terminal-output');
+
+    terminalOutputs.forEach(output => {
+        // Sauvegarder le texte original
+        const originalText = output.textContent;
+        // Vider le contenu initial
+        output.textContent = '';
+
+        // Créer un span pour le texte
+        const textSpan = document.createElement('span');
+        textSpan.textContent = originalText;
+        output.appendChild(textSpan);
+
+        // S'assurer que le conteneur a la bonne largeur
+        output.style.width = '0';
+
+        // Réinitialiser l'animation
+        output.style.animation = 'none';
+        output.offsetHeight; // Forcer un reflow
+        output.style.animation = null;
+    });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     observeElements();
     setActiveNavLink();
+    animateTerminal();
 });
