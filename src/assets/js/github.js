@@ -1,4 +1,3 @@
-// Remplacez cette ligne par votre nom d'utilisateur GitHub
 const GITHUB_USERNAME = 'kenny516';
 
 async function fetchGithubRepos() {
@@ -10,6 +9,8 @@ async function fetchGithubRepos() {
         const repos = await response.json();
 
         const projectsContainer = document.querySelector('#projects-container');
+        projectsContainer.className = 'projects-grid';
+
         if (repos.length === 0) {
             projectsContainer.innerHTML = `
                 <div class="terminal-style">
@@ -18,12 +19,14 @@ async function fetchGithubRepos() {
             return;
         }
 
-        repos.forEach(repo => {
-            if (!repo.fork && !repo.private) {
-                const projectCard = createProjectCard(repo);
-                projectsContainer.appendChild(projectCard);
-            }
-        });
+        projectsContainer.innerHTML = repos
+            .filter(repo => !repo.fork && !repo.private)
+            .map(repo => createProjectCard(repo))
+            .join('');
+
+        // Ajouter les gestionnaires d'événements pour les boutons de copie
+        setupCopyButtons();
+
     } catch (error) {
         console.error('Erreur lors de la récupération des repos:', error);
         const projectsContainer = document.querySelector('#projects-container');
@@ -36,24 +39,75 @@ async function fetchGithubRepos() {
 }
 
 function createProjectCard(repo) {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-
-    card.innerHTML = `
-        <h3 class="typing-effect">${repo.name}</h3>
-        <p>${repo.description || 'Aucune description disponible'}</p>
-        <div class="project-stats">
-            <span>⭐ ${repo.stargazers_count}</span>
-            <span>🔄 ${repo.forks_count}</span>
-            <span class="project-lang">${repo.language || 'N/A'}</span>
+    return `
+        <div class="project-card">
+            <div class="project-header">
+                <h3 class="project-title">${repo.name}</h3>
+            </div>
+            
+            <p class="project-description">
+                ${repo.description || 'Aucune description disponible'}
+            </p>
+            
+            <div class="project-meta">
+                <div class="project-stat">
+                    <i class="fas fa-star"></i>
+                    <span>${repo.stargazers_count}</span>
+                </div>
+                <div class="project-stat">
+                    <i class="fas fa-code-branch"></i>
+                    <span>${repo.forks_count}</span>
+                </div>
+                ${repo.language ? `
+                    <div class="project-language">
+                        <i class="fas fa-code"></i>
+                        ${repo.language}
+                    </div>
+                ` : ''}
+            </div>
+            
+            <div class="git-clone-container">
+                <div class="git-clone-command" data-clone-url="${repo.clone_url}">
+                    $ git clone ${repo.clone_url}
+                </div>
+                <button class="copy-button" aria-label="Copier la commande clone">
+                    <i class="far fa-copy"></i>
+                    <span class="tooltip">Copier</span>
+                </button>
+            </div>
+            
+            <div class="project-links">
+                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <i class="fab fa-github"></i>
+                    <span>Voir sur GitHub</span>
+                </a>
+                ${repo.homepage ? `
+                    <a href="${repo.homepage}" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Demo Live</span>
+                    </a>
+                ` : ''}
+            </div>
         </div>
-        <div class="terminal-style">
-            git clone ${repo.clone_url}
-        </div>
-        <a href="${repo.html_url}" target="_blank" class="btn">Voir le projet</a>
     `;
+}
 
-    return card;
+function setupCopyButtons() {
+    document.querySelectorAll('.copy-button').forEach(button => {
+        button.addEventListener('click', async () => {
+            const cloneCommand = button.previousElementSibling.textContent;
+            try {
+                await navigator.clipboard.writeText(cloneCommand);
+                const tooltip = button.querySelector('.tooltip');
+                tooltip.textContent = 'Copié !';
+                setTimeout(() => {
+                    tooltip.textContent = 'Copier';
+                }, 2000);
+            } catch (err) {
+                console.error('Erreur lors de la copie :', err);
+            }
+        });
+    });
 }
 
 document.addEventListener('DOMContentLoaded', fetchGithubRepos);
