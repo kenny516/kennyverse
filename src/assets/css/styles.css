@@ -85,6 +85,7 @@ header {
   transition: all 0.3s ease;
 }
 
+
 /* Nouvelle structure du header */
 .header-content {
   max-width: 1200px;
@@ -1924,6 +1925,150 @@ li {
         gap: 0.5rem;
         width: 100%;
     }
+}
+
+/* ...existing code... */
+
+/* Styles de base pour la section profil */
+.profile-section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 968px) {
+    .profile-container {
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .profile-name {
+        font-size: 2rem;
+    }
+
+    .profile-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-section {
+        padding: 1rem;
+    }
+
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-image-container {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    .profile-info {
+        width: 100%;
+    }
+
+    .profile-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-section {
+        padding: 0.5rem;
+    }
+
+    .profile-container {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .profile-image-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-name {
+        font-size: 1.8rem;
+    }
+
+    .profile-title {
+        font-size: 1rem;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .stat {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ...existing code... */
+
+/* Styles pour l'effet typing responsive */
+.typing-effect {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(40, end),
+             blink-caret 0.75s step-end infinite;
+    border-right: 2px solid var(--neon-blue);
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .typing-effect {
+        font-size: 1.8rem;
+        animation: typing 2.5s steps(30, end),
+                 blink-caret 0.75s step-end infinite;
+    }
+}
+
+@media (max-width: 480px) {
+    .typing-effect {
+        font-size: 1.4rem;
+        white-space: normal;
+        border-right: none;
+        animation: fadeIn 1s ease-in;
+        text-align: center;
+        word-wrap: break-word;
+    }
+}
+
+/* Actualisation des keyframes */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* ...existing code... */
