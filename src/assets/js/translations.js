@@ -68,7 +68,8 @@ const translations = {
         experience: "Expérience",
         intern2023: "Stage - 2023",
         companyName: "TechMad Solutions",
-        internDesc: "Développement d'une application web de gestion des ressources humaines"
+        internDesc: "Développement d'une application web de gestion des ressources humaines",
+        downloadCV: "CV"
     },
     en: {
         home: "Home",
@@ -139,7 +140,8 @@ const translations = {
         experience: "Experience",
         intern2023: "Internship - 2023",
         companyName: "TechMad Solutions",
-        internDesc: "Development of a human resources management web application"
+        internDesc: "Development of a human resources management web application",
+        downloadCV: "CV"
     }
 };
 
